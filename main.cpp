@@ -4,32 +4,20 @@
 
 using namespace std;
 
-
-//TODO
-/*
- * поменять местами время и дату во всех регв ?
- * что-то с локалями ru формат для месяца - проверить на win
- * проверить чтобы не было двойных совпадений
- *
- * exp 6 и 7 с коротким годом
- */
-
-
 int main()
 {
     try
     {
-
        std::time_t t = std::time(nullptr);
        std::tm tm = *std::localtime(&t);
        stringstream ss; ss<< put_time(&tm, "%H:%M %d %B %Y");
 
        cout<<ss.str()<<endl;
-       cout<<timeConvert(ss.str(), "%H:%M:%S %d.%m")<<endl;
+       cout<<timeConvert(ss.str(), "%d.%m.%y %H:%M:%S")<<endl;
 
        //output:
-       //11:54 12 September 2021
-       //11:54:00 12.09
+       //12:16 12 September 2021
+       //12.09.2021 12:16:00
 
 
 
