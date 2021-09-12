@@ -103,16 +103,15 @@ const std::string getTimeFormat(std::string_view origin_time,
     throw "getTimeFormat found no matches";
 }
 
-const std::string timeConvert(std::string_view origin_time,
-                              std::string_view target_fmt, std::string_view locale)
+const std::string timeConvert(std::string_view origin_time, std::string_view target_fmt,
+                              const std::string& ts, const std::string& ds,
+                              std::string_view locale)
 {
     std::tm t{};
     std::istringstream ss{origin_time.data()};
     ss.imbue(std::locale(locale.data()));
 
-    std::string tf = getTimeFormat(origin_time);
-
-    ss >> std::get_time(&t, getTimeFormat(origin_time).c_str());
+    ss >> std::get_time(&t, getTimeFormat(origin_time.data(), ts, ds).c_str());
 
     if (!ss.fail())
     {
