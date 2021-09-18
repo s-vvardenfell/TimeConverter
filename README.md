@@ -4,7 +4,7 @@ Converts the time from the received string to the format specified by the user.
 The format of the original time is determined using regular expressions. 
 <br>You should provide delimiters if they differ from ':' (ts == time separaor arg) and '.' (ds == date separator arg) respectively. 
 <br>The timeConvert() function has a fifth optional argument - locale - set by default as "en_US.utf-8".
-<br>Delimiters for otput time format and time formats like %c will be added later.
+<br>
 
 **Supported output time formats:**<br>
 %H:%M:%S %d.%m.%Y<br>
