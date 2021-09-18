@@ -67,6 +67,10 @@ const std::string getTimeFormat(std::string_view origin_time,
     static const std::regex exp18{
     "([0-3][\\d])\\s(\\w{4,9})\\s([\\d]{2})\\s([01]?[\\d]|2[0-3])" + ts + "([0-5][\\d])"};
 
+    static const std::regex exp19{
+        "(\\w{3})\\s(\\w{3})\\s([\\d]{2})\\s([01]?[\\d]|2[0-3])" + ts + "([0-5][\\d])" + ts + "([0-5][\\d])\\s([2][0][0-5][\\d])"
+    };
+
 
     static const std::map<const std::string, const std::regex*> formats{
         {"%H:%M:%S %d.%m.%Y", &exp1},
@@ -89,7 +93,9 @@ const std::string getTimeFormat(std::string_view origin_time,
         {"%d %b %Y %H:%M", &exp15},     //reverse exp6
         {"%d %B %Y %H:%M", &exp16},     //reverse exp7
         {"%d %b %y %H:%M", &exp17},     //reverse exp8
-        {"%d %B %y %H:%M", &exp18}      //reverse exp9
+        {"%d %B %y %H:%M", &exp18},      //reverse exp9
+        //other
+        {"%c", &exp19},
     };
 
     for(const auto& format : formats)
